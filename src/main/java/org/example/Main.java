@@ -10,9 +10,7 @@ public class Main {
             Thread a = new Thread(new Action(counter,true,lock));
             Thread b = new Thread(new Action(counter,false,lock));
             a.start();
-            Thread.sleep(1);
             b.start();
-            b.join();
         }
 
         while(true){
