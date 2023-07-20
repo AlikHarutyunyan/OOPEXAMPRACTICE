@@ -13,10 +13,6 @@ public class Counter {
 
     public synchronized void updateCount(int num) {
         this.count+= num;
-        this.times++;
-        if(this.times == Constants.ALL_UPDATES){
-            this.finished = true;
-        }
     }
 
     public boolean isFinished() {

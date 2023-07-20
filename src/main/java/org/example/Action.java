@@ -12,26 +12,10 @@ public class Action implements Runnable{
     @Override
     public void run() {
         for (int i = 0; i < Constants.UPDATE_TIMES; i++) {
-            synchronized (lock) {
-                if (this.toIncrement) {
-                    this.increment();
-                    lock.notify();
-                    try {
-                        lock.wait();
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
-                    this.decrement();
-                    lock.notify();
-                    if(i+1 != Constants.UPDATE_TIMES) {
-                        try {
-                            lock.wait();
-                        } catch (InterruptedException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
+            if (this.toIncrement) {
+                this.increment();
+            }else{
+                this.decrement();
             }
         }
     }
