@@ -13,6 +13,7 @@ public class Main {
             b.start();
         }
 
+
         while(true){
             if(counter.isFinished()){
                 System.out.println("Final: " + counter.getCount());
